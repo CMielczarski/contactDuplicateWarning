@@ -1,0 +1,37 @@
+.box-show {
+  display: block;
+}
+.box-hide {
+  display: none;
+}
+
+.buttonNormal{
+  font-family: 'customSalesforceFont';
+  color: #878A8C !important;
+  font-size: 12px;
+  box-shadow: 1px 1px 1px #FFFFFF;
+  padding: 7px 25px;
+  border-radius: 10px;
+  border: 2px solid #C7C7C7;
+  background: #FFFFFF;
+    }
+
+.buttonSave{
+	font-family: 'customSalesforceFont';
+  color: #FFFFFF !important;
+  font-size: 12px;
+  box-shadow: 1px 1px 1px #000000;
+  padding: 7px 25px;
+  border-radius: 10px;
+  border: 2px solid #000000;
+  background: #000000;
+  }
+  
+  customFont.THIS {
+    font-family: 'customSalesforceFont';
+    font-size: 1.2rem;
+}
+@font-face {
+   font-family: 'customSalesforceFont';
+   src: url(/resource/fonts/SalesforceSans-Book); 
+}

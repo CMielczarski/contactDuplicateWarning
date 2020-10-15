@@ -1,0 +1,359 @@
+<template>
+    <div>
+        <template if:true={spinner}>
+            <lightning-spinner variant="brand" size="large"></lightning-spinner>
+        </template>
+    </div>
+    <template if:true={showPopup}>
+		<div class="customFont">
+			<div style="height: 550px;">
+				<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+					<div class="slds-modal__container">
+						<div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+							<div>
+								<template if:true={spinner}>
+									<lightning-spinner variant="brand" size="medium"></lightning-spinner>
+								</template>
+							</div>
+
+							<template if:true={showWarning}>
+								<div id="mainForm" style="border: 1px solid #a8a8a8;">
+                                    <table>
+                                        <tr>
+                                            <td style="text-align:center">
+                                                <span style="font-size:16px; ">
+                                                    <lightning-formatted-text value={warningMessage}></lightning-formatted-text>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <template if:true={showTab}>
+                                                        <lightning-formatted-url label="View Duplicates" value="blank" target="_blank" onclick={openTab}>Duplicates</lightning-formatted-url>
+                                                    </template>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </template>
+                            <template if:true={showItem}>
+                                <div>
+                                    <lightning-record-edit-form
+                                        record-id={viewRecordId}
+                                        object-api-name="Contact"
+                                        >
+
+                                        <span style="text-decoration:underline"><lightning-formatted-text value="Contact Information"></lightning-formatted-text></span>
+                                        <br/>
+                                        <br/>
+                                        <table>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="Name"></lightning-output-field>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="Phone"></lightning-output-field>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="AccountId"></lightning-output-field>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="MobilePhone"></lightning-output-field>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="iSell__Avention_ID__c"></lightning-output-field>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="Fax"></lightning-output-field>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="DNBoptimizer__DnBContactRecord__c"></lightning-output-field>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="OwnerId"></lightning-output-field>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="Email"></lightning-output-field>
+                                                </td>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="SGN_Contact_ID__c"></lightning-output-field>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="Title"></lightning-output-field>
+                                                </td>
+                                                <td>
+                                                    <lightning-formatted-text value=""></lightning-formatted-text><br/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="ReportsToId"></lightning-output-field>
+                                                </td>
+                                                <td>
+                                                    <lightning-formatted-text value=""></lightning-formatted-text><br/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="eCAD_Model_Format_Preference__c"></lightning-output-field>
+                                                </td>
+                                                <td>
+                                                    <lightning-formatted-text value=""></lightning-formatted-text><br/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="ERP_Preference__c"></lightning-output-field>
+                                                </td>
+                                                <td>
+                                                    <lightning-formatted-text value=""></lightning-formatted-text><br/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="mCAD_Model_Format_Preference__c"></lightning-output-field>
+                                                </td>
+                                                <td>
+                                                    <lightning-formatted-text value=""></lightning-formatted-text><br/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-bottom: 1px solid #a8a8a8;">
+                                                    <lightning-output-field field-name="SI_Software_Preference__c"></lightning-output-field>
+                                                </td>
+                                                <td>
+                                                    <lightning-formatted-text value=""></lightning-formatted-text><br/>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </lightning-record-edit-form>
+                                    <br/>
+                                    <button class="buttonNormal" onclick={closeItemAlt}>Back</button>
+                                </div>
+                            </template>
+                        	<div class={box}>
+            					<template if:true={navTab}>
+									<div>
+										<header class="slds-text-heading_small slds-text-align_center" style="border-bottom: 1px solid rgb(196, 186, 186)">
+											<span style="text-align:center; font-size: 22px; color:grey">
+                                                <lightning-formatted-text value="View Active Duplicate Records"></lightning-formatted-text>
+                                                <br/>
+                                                <br/>
+											</span>
+										</header>
+										<br/>
+                                        <span><lightning-formatted-text value={regDupCount}></lightning-formatted-text></span>
+                                        <br/>
+                                        <lightning-formatted-text value="Click the record name to open it for review."></lightning-formatted-text>                                        
+										<br/>
+										<br/>
+										<div class="slds-grid slds-wrap" style="background-color:rgb(231, 231, 231)">
+											<template for:each={duplicates} for:item="dup">
+                                                <table key={dup.Id} style="border:1px solid rgb(196, 186, 186); width:500px; margin: 10px; background-color:white">
+													<tr>
+														<td colspan="2" style="padding-left: 10px; padding-top: 10px;">
+															<lightning-icon
+																icon-name="standard:contact"
+																size="large"
+																alternative-text="Contact">
+															</lightning-icon>
+															&nbsp;&nbsp;
+															<lightning-formatted-text value={dup.Name}></lightning-formatted-text>
+															<br/>
+															<br/>
+														</td>
+													</tr>
+													<tr>
+														<td style="padding-left: 10px;">
+															<lightning-formatted-text value="Name:"></lightning-formatted-text>
+														</td>
+														<td>
+                                                            <lightning-formatted-url title={dup.Id} label={dup.Name} value={dup.Id} target="_blank" onclick={openItemAlt}></lightning-formatted-url>
+														</td>
+													</tr>
+													<tr>
+														<td style="padding-left: 10px;">
+															<lightning-formatted-text value="Account Name:"></lightning-formatted-text>
+														</td>
+														<td>
+															<lightning-formatted-url title={dup.Account.Id} label={dup.Account.Name} value={dup.Account.Id} target="_blank" onclick={openItem}></lightning-formatted-url>
+														</td>
+													</tr>
+													<tr>
+														<td style="padding-left: 10px;">
+															<lightning-formatted-text value="Email:"></lightning-formatted-text>
+														</td>
+														<td>
+															<lightning-formatted-text value={dup.Email}></lightning-formatted-text>
+														</td>
+													</tr>
+													<tr>
+														<td style="padding-left: 10px;">
+															<lightning-formatted-text value="Phone:"></lightning-formatted-text>
+														</td>
+														<td>
+															<lightning-formatted-text value={dup.Phone}></lightning-formatted-text>
+														</td>
+													</tr>
+													<tr>
+														<td style="padding-left: 10px;">
+															<lightning-formatted-text value="Owner:"></lightning-formatted-text>
+														</td>
+														<td>
+                                                            <lightning-formatted-url title={dup.Owner.Id} label={dup.Owner.Name} value={dup.Owner.Id} target="_blank" onclick={openItem}></lightning-formatted-url>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <br key={dup.Id}/>
+                                                        </td>
+                                                        <td>
+                                                            <br key={dup.Id}/>
+                                                        </td>
+                                                    </tr>
+													<tr style="border-top:1px solid rgb(196, 186, 186)">
+														<td colspan="2">
+															<div style="text-align:center; padding-top:10px; padding-bottom:10px">
+                                                                <button class="slds-button" title={dup.Id} onclick={deleteReplaceItem} value={dup.Id}><span style="color:#4975c2">Use This Contact to Replace the Duplicate</span></button>
+															</div>
+														</td>
+													</tr>
+												</table>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<br key={dup.Id}/><br key={dup.Id}/><br key={dup.Id}/>
+											</template>
+										</div>
+										<br/>
+									</div>
+                                    <br/>
+                                </template>
+                                <template if:true={warningTab}>
+                                        <div>
+                                            <header class="slds-text-heading_small slds-text-align_center" style="border-bottom: 1px solid rgb(196, 186, 186)" >
+                                                <span style="text-align:center; font-size: 22px; color:grey">
+                                                    <lightning-formatted-text value="View Inactive Duplicate Records"></lightning-formatted-text>
+                                                    <br/>
+                                                    <br/>
+                                                </span>
+                                            </header>
+                                            <br/>
+                                                <lightning-formatted-text value={deacDupCount}></lightning-formatted-text>
+                                            <br/>
+                                            <br/>
+                                            <div class="slds-grid slds-wrap" style="background-color:rgb(231, 231, 231)">
+                                                <template for:each={deactivatedDuplicates} for:item="dup">
+                                                    <table key={dup.Id} style="border:1px solid rgb(196, 186, 186); width:500px; margin:10px; background-color:white">
+                                                        <tr>
+                                                            <td colspan="2" style="padding-left: 10px; padding-top: 10px;">
+                                                                <lightning-icon
+                                                                    icon-name="standard:contact"
+                                                                    size="large"
+                                                                    alternative-text="Contact">
+                                                                </lightning-icon>
+                                                                &nbsp;&nbsp;
+                                                                <lightning-formatted-text value={dup.Name}></lightning-formatted-text>
+                                                                <br/>
+                                                                <br/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left: 10px;">
+                                                                <lightning-formatted-text value="Name:"></lightning-formatted-text>
+                                                            </td>
+                                                            <td>
+                                                                <lightning-formatted-text value={dup.Name}></lightning-formatted-text>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left: 10px;">
+                                                                <lightning-formatted-text value="Account Name:"></lightning-formatted-text>
+                                                            </td>
+                                                            <td>
+                                                                <lightning-formatted-url title={dup.Account.Id} label={dup.Account.Name} value={dup.Account.Id} target="_blank" onclick={openItem}></lightning-formatted-url>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left: 10px;">
+                                                                <lightning-formatted-text value="Email:"></lightning-formatted-text>
+                                                            </td>
+                                                            <td>
+                                                                <lightning-formatted-text value={dup.Email}></lightning-formatted-text>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left: 10px;">
+                                                                <lightning-formatted-text value="Phone:"></lightning-formatted-text>
+                                                            </td>
+                                                            <td>
+                                                                <lightning-formatted-text value={dup.Phone}></lightning-formatted-text>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left: 10px;">
+                                                                <lightning-formatted-text value="Owner:"></lightning-formatted-text>
+                                                            </td>
+                                                            <td>
+                                                                <lightning-formatted-url title={dup.Owner.Id} label={dup.Owner.Name} value={dup.Owner.Id} target="_blank" onclick={openItem}></lightning-formatted-url>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <br key={dup.Id}/>
+                                                            </td>
+                                                            <td>
+                                                                <br key={dup.Id}/>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="border-top:1px solid rgb(196, 186, 186)">
+                                                            <td colspan="2">
+                                                                <div style="text-align:center; padding-top:10px; padding-bottom:10px">
+                                                                    <button class="slds-button" title={dup.Id} onclick={reactivateReplaceItem} value={dup.Id}><span style="color:#4975c2">Reactivate This Contact to Replace the Duplicate</span></button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <br key={dup.Id}/><br key={dup.Id}/><br key={dup.Id}/>
+                                                </template>
+                                            </div>
+                                            <br/>
+                                        </div>                                
+                                </template>
+                                <template if:true={showOptions}>
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <lightning-formatted-text value="You may also choose to accept your original entry as a valid record, or stop the process and remove it, by clicking one of the buttons below"></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button class="buttonSave" onclick={acceptEntry}>Create This New Contact</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <br/>
+                                                <button class="buttonNormal" onclick={cancelRemove}>Cancel and Remove This New Contact</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                </template>
+							</div>
+						</div>
+					</div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </div>
+    </template>
+</template>
